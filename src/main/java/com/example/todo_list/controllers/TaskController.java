@@ -49,7 +49,7 @@ public class TaskController {
         }
     }
 
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}/check")
     public ResponseEntity<TaskModel> toggleTask(@PathVariable UUID id, @RequestBody boolean check) {
         try {
             TaskModel attCheck = taskService.toggleTask(id, check);

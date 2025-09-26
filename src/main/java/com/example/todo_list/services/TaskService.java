@@ -36,7 +36,7 @@ public class TaskService {
         if (check == null) {
             return iTaskRepository.findAll();
         } else {
-            return iTaskRepository.findByCheck(check);
+            return iTaskRepository.findByIsCompleted(check);
         }
     }
 
@@ -52,12 +52,12 @@ public class TaskService {
 
         try {
             log.info("Iniciando mudança de informação na task de ID: " + id);
-            if (taskFind.getTitle() != null) {
+            if (updatedTask.getTitle() != null) {
                 log.info("Iniciando troca de informação de titulo");
                 taskFind.setTitle(updatedTask.getTitle());
             }
 
-            if (taskFind.getDescription() != null) {
+            if (updatedTask.getDescription() != null) {
                 log.info("Iniciando troca de informação da descrição");
                 taskFind.setDescription(updatedTask.getDescription());
             }

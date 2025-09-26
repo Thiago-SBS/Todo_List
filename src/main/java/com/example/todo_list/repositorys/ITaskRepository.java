@@ -9,5 +9,5 @@ import java.util.UUID;
 
 @Repository
 public interface ITaskRepository extends JpaRepository<TaskModel, UUID> {
-    List<TaskModel> findByCheck(boolean check);
+    List<TaskModel> findByIsCompleted(boolean isCompleted);
 }
