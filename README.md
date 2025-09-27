@@ -10,7 +10,7 @@
 
 <p>Cada tarefa deve possuir os seguintes atributos:</p>
 <ul>
-  <li>name (String, obrigatório) → Nome da tarefa.</li>
+  <li>title (String, obrigatório) → Título da tarefa.</li>
   <li>description (String, opcional) → Detalhes adicionais sobre a tarefa. </li>
   <li>check (Boolean, default: false) → Indica se a tarefa foi concluída ou não. </li>
   <li>createdAt (LocalDateTime) → Data/hora de criação da tarefa. </li>
