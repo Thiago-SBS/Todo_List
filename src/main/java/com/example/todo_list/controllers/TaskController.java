@@ -2,7 +2,7 @@ package com.example.todo_list.controllers;
 
 import com.example.todo_list.models.TaskModel;
 import com.example.todo_list.services.TaskService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,23 +12,19 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/tasks")
+@RequiredArgsConstructor
 public class TaskController {
 
-    @Autowired
-    private TaskService taskService;
+    private final TaskService taskService;
 
-    public TaskController(TaskService taskService) {
-        this.taskService = taskService;
-    }
-
-    @PutMapping
+    @PostMapping
     public ResponseEntity<TaskModel> createTask(@RequestBody TaskModel task) {
         try {
             TaskModel newTask = taskService.createTask(task);
             return ResponseEntity.ok(newTask);
 
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+              return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
 

@@ -2,8 +2,8 @@ package com.example.todo_list.services;
 
 import com.example.todo_list.models.TaskModel;
 import com.example.todo_list.repositorys.ITaskRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -13,20 +13,14 @@ import java.util.UUID;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class TaskService {
 
-    @Autowired
-    private ITaskRepository iTaskRepository;
-
-    public TaskService(ITaskRepository taskRepository) {
-        this.iTaskRepository = taskRepository;
-    }
+    private final ITaskRepository iTaskRepository;
 
     public TaskModel createTask(TaskModel task) {
-        if (task.getIsCompleted() == null) {
-            task.setIsCompleted(false);
-        }
 
+        task.setIsCompleted(false);
         task.setCreatedAt(LocalDateTime.now());
 
         return iTaskRepository.save(task);
